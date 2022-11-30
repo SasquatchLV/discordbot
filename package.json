@@ -1,0 +1,22 @@
+{
+  "name": "discordbot",
+  "version": "1.0.0",
+  "description": "Pro bot",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "Almighty Sasquatch",
+  "license": "ISC",
+  "dependencies": {
+    "@fabricio-191/valve-server-query": "^4.1.5",
+    "discord.js": "^14.7.0",
+    "dotenv": "^16.0.3",
+    "node-emoji": "^1.11.0",
+    "nodemon": "^2.0.20",
+    "read-last-lines": "^1.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0"
+  }
+}
