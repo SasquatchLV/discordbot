@@ -30,7 +30,7 @@ client.commands = new Collection();
 
 const commands = [];
 let lastUser = null;
-let lastDeathUser = null;
+const lastDeaths = [];
 const users = {};
 
 const commandsPath = path.join(__dirname, 'commands');
@@ -256,7 +256,7 @@ const readLogs = () => {
 				}
 
 				if (plogDeathMatch) {
-					if (plogDeathMatch[0] != lastDeathUser) {
+					if (!lastDeaths.includes(plogDeathMatch[0])) {
 						const playerName = plogDeathMatch[1];
 
 						const playerLogEmbed = new EmbedBuilder()
@@ -271,7 +271,7 @@ const readLogs = () => {
 
 						});
 
-						lastDeathUser = plogDeathMatch[0];
+						lastDeaths.push(plogDeathMatch[0]);
 					}
 
 				}
