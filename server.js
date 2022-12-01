@@ -15,6 +15,7 @@ const {
 } = require('discord.js');
 const { Server } = require('@fabricio-191/valve-server-query');
 const emoji = require('node-emoji');
+const moment = require('moment');
 
 // Create a new client instance
 const client = new Client({ intents: [
@@ -69,8 +70,6 @@ const rest = new REST({ version: '10' }).setToken(process.env.token);
 		);
 
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-
-
 	}
 	catch (error) {
 		// And of course, make sure you catch and log any errors!
@@ -217,10 +216,11 @@ const readLogs = () => {
 				if (disconnected) {
 					const id = disconnected[2];
 
-					if (users[id]) {
+					if (users[id] && users[id].user !== undefined) {
 						const playerDisconnectedEmbed = new EmbedBuilder()
 							.setColor(0x0099FF)
 							.setTitle(`${users[id].user} just disconnected from the server!`)
+							.setDescription(`Online time: ${moment.duration(moment().diff(users[id].connected)).humanize()}`)
 							.setAuthor({ name: 'Player Log' })
 							.setTimestamp();
 
